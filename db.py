@@ -19,17 +19,26 @@ def verify(user_name, password):
     for i in cur:
         if i[0]==1:
             st.session_state['logged_in'] = 'Yes'
+            st.session_state['user_name'] = user_name
             return st.warning("Logged In Successfully")
         else:
-            return st.warning("User Account Not Found. Please Sign Up .......")
+            return st.warning("Account Not Found. Please Sign Up .......")
 
 
-def insert(user_name, password, country):
-    cur.execute("""
-    INSERT INTO users (user_name, password, country) VALUES (%s, %s, %s);
-    """,(user_name, password, country))
-    conn.commit()
-    return st.warning("Signed up Successfully....")
+def insert(user_name, password, country): 
+    cur.execute("""SELECT COUNT(COUNTRY) FROM users WHERE user_name = %(user_name)s;""",
+                {'user_name': user_name,})         
+    for i in cur:
+        if i[0]==1:
+            st.warning(":cry: User Name is already taken. Try diffrent one.....")
+        else:
+            cur.execute("""
+            INSERT INTO users (user_name, password, country) VALUES (%s, %s, %s);
+            """,(user_name, password, country))
+            conn.commit()
+            st.session_state['logged_in'] = 'Yes'
+            st.session_state['user_name'] = user_name
+            return st.warning("Signed up Successfully....:grinning:")
 
 # cur.close()
 # conn.close()

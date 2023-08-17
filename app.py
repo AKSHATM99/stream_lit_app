@@ -5,10 +5,10 @@ from login import login
 from signup import signup
 from streamlit_autorefresh import st_autorefresh
 
-
 if "logged_in" in st.session_state:
-    st_autorefresh(interval=1500, limit=20, key="key1")
+    st.title(':blue[Ai Verse :computer:]')
     st.write(':flag-in:')
+    st.write("Welcome :blush:" , st.session_state['user_name'])
     page = st.sidebar.selectbox("Select Model :blush:", ("Deep Learning Model", "Linear Regression Model"))
     if page == "Linear Regression Model":
         show_linear_model_page()
@@ -17,10 +17,10 @@ if "logged_in" in st.session_state:
     col1, col2, col3 = st.columns(3)
     if col3.button('LogOut'):
         del st.session_state["logged_in"]
-        st_autorefresh(interval=1500, limit=20, key="key2")
+        st_autorefresh(interval=500, limit=200, key="logout_refresh")
 
-elif 'logged_in' not in st.session_state:
-    st_autorefresh(interval=1500, limit=20, key="key3")
+elif 'signed_in' in st.session_state or 'logged_in' not in st.session_state:
+    st.title(':blue[Ai Verse :computer:]')
     st.write(':flag-in:')
     page1 = st.sidebar.selectbox("Login :blush:", ("Login", "New User ? Sign Up...."))
     if page1 == "Login":

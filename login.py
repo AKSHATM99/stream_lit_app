@@ -1,5 +1,6 @@
 import streamlit as st
 from db import verify
+from streamlit_autorefresh import st_autorefresh
 
 def login():
     st.header("Log In")
@@ -8,3 +9,4 @@ def login():
     login =  st.button("LogIn")
     if login:
         verify(user_name, password)
+    st_autorefresh(interval=500, limit=200, key="login_refresh")
