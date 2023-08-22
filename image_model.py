@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 import numpy as np
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
@@ -11,7 +10,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 model = keras.models.load_model('BikeVsCar_Model(91.5).h5')
 
 def show_image_model_page():
-    st.header("Deep Learning Model")
+    st.header(":blue[Deep Learning Model (Bike Vs Car)]")
     #File Uploader
     file = st.file_uploader("Upload the image to be classified \U0001F447", type=["jpg", "png"])
     # Uploading and Transforming Image to array for feeding to model

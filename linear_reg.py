@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 import numpy as np
 import pickle
 
@@ -7,12 +6,12 @@ import pickle
 reg = pickle.load(open('linear_reg_model.pkl', 'rb'))
 
 def show_linear_model_page():
-    st.header("Linear Regression Model")
+    st.header(":blue[Linear Regression Model (Car Price Prediction)]")
     age = st.slider('Age of your car?(Years)', 0, 20, 5)
     st.write("My Car is ", age, 'years old')
     km = st.slider('KiloMeters Driven?', 0, 200000, 10000)
     st.write("My Car covered ", km, 'in total')
-    ok = st.button("Calculate Price :moneybag:")
+    ok = st.button(":blue[Calculate Price] :moneybag:")
     if ok:
         int_features = [int(x) for x in (km, age)]
         final_int = [np.array(int_features)]
