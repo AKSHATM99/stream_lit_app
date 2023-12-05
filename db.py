@@ -1,8 +1,8 @@
 import psycopg2
 import streamlit as st
 
-conn = psycopg2.connect(host="dpg-cje7b6ocfp5c73bflmjg-a.singapore-postgres.render.com", dbname="aiverse_db",
-user="aiverse_app", password="lFsZNXGIDS4rZaI1BrdEb8xG4JDOQsGJ", port=5432)
+conn = psycopg2.connect(host="dpg-clngc4oapebc739oarl0-a.singapore-postgres.render.com", dbname="aiverse_db",
+user="aiverse_db_83go_user", password="JCjAYouvP7NZhI8FoSmSoLRtYcfEdihs", port=5432)
 
 cur = conn.cursor()
 
